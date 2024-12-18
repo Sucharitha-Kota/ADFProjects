@@ -1,0 +1,42 @@
+{
+	"name": "ds_dev_source_storage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dev_source_storage",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"sourcedev": "https://ingestion98.dfs.core.windows.net/",
+				"secret_account_key": "source-storage-account-key",
+				"key_vault_name_dev": "https://charitha98.vault.azure.net/"
+			}
+		},
+		"parameters": {
+			"srcFolder": {
+				"type": "string"
+			},
+			"srcFile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().srcFile",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().srcFolder",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

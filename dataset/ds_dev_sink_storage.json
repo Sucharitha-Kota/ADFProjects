@@ -1,0 +1,42 @@
+{
+	"name": "ds_dev_sink_storage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dev_sink_storage",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"sinkdev": "https://sinkstorage98.dfs.core.windows.net/",
+				"key_vault_name_sink": "https://charitha98.vault.azure.net/",
+				"secret_sink_account_key_name": "sink-storage-account-key"
+			}
+		},
+		"parameters": {
+			"sinkFolder": {
+				"type": "string"
+			},
+			"sinkFile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().sinkFile",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().sinkFolder",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
