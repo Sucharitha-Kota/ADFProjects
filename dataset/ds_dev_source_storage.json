@@ -5,9 +5,9 @@
 			"referenceName": "ls_dev_source_storage",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"sourcedev": "https://ingestion98.dfs.core.windows.net/",
-				"secret_account_key": "source-storage-account-key",
-				"key_vault_name_dev": "https://charitha98.vault.azure.net/"
+				"sourcedev": "https://qasourcestorage.dfs.core.windows.net/",
+				"secret_account_key": "qa-storage-source-acc-key",
+				"key_vault_name_dev": "https://qavault98.vault.azure.net/"
 			}
 		},
 		"parameters": {

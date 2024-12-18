@@ -5,9 +5,9 @@
 			"referenceName": "ls_dev_sink_storage",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"sinkdev": "https://sinkstorage98.dfs.core.windows.net/",
-				"key_vault_name_sink": "https://charitha98.vault.azure.net/",
-				"secret_sink_account_key_name": "sink-storage-account-key"
+				"sinkdev": "https://qasinkstorage.dfs.core.windows.net/",
+				"key_vault_name_sink": "https://qavault98.vault.azure.net/",
+				"secret_sink_account_key_name": "qa-sink-storage-account-key"
 			}
 		},
 		"parameters": {
