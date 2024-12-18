@@ -1,0 +1,9 @@
+{
+	"name": "qaadf98",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "efecda7f-fbf8-4800-bac8-8514ded9521c",
+		"tenantId": "17e46124-a380-4096-841f-150cd2c41f95"
+	}
+}
