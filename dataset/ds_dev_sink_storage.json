@@ -1,20 +1,20 @@
 {
-	"name": "ds_dev_source_storage",
+	"name": "ds_dev_sink_storage",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_dev_source_storage",
+			"referenceName": "ls_dev_sink_storage",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"sourcedev": "https://ingestion98.dfs.core.windows.net/",
-				"secret_account_key": "source-storage-account-key",
-				"key_vault_name_dev": "https://charitha98.vault.azure.net/"
+				"sinkdev": "https://sinkstorage98.dfs.core.windows.net/",
+				"key_vault_name_sink": "https://charitha98.vault.azure.net/",
+				"secret_sink_account_key_name": "sink-storage-account-key"
 			}
 		},
 		"parameters": {
-			"srcFolder": {
+			"sinkFolder": {
 				"type": "string"
 			},
-			"srcFile": {
+			"sinkFile": {
 				"type": "string"
 			}
 		},
@@ -24,17 +24,17 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().srcFile",
+					"value": "@dataset().sinkFile",
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "@dataset().srcFolder",
+					"value": "@dataset().sinkFolder",
 					"type": "Expression"
 				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
