@@ -1,0 +1,38 @@
+{
+	"name": "ls_dev_sink_storage",
+	"properties": {
+		"parameters": {
+			"sinkdev": {
+				"type": "String"
+			},
+			"key_vault_name_sink": {
+				"type": "String"
+			},
+			"secret_sink_account_key_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().sinkdev}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Azurekey_vault_dev",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"key_vault_dev": {
+							"value": "@linkedService().key_vault_name_sink",
+							"type": "Expression"
+						}
+					}
+				},
+				"secretName": {
+					"value": "@linkedService().secret_sink_account_key_name",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

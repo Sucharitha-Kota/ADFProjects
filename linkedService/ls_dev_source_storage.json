@@ -1,0 +1,38 @@
+{
+	"name": "ls_dev_source_storage",
+	"properties": {
+		"parameters": {
+			"sourcedev": {
+				"type": "string"
+			},
+			"secret_account_key": {
+				"type": "String"
+			},
+			"key_vault_name_dev": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().sourcedev}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Azurekey_vault_dev",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"key_vault_dev": {
+							"value": "@linkedService().key_vault_name_dev",
+							"type": "Expression"
+						}
+					}
+				},
+				"secretName": {
+					"value": "@linkedService().secret_account_key",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

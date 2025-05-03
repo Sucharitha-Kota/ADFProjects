@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "pipelinedev",
 	"properties": {
 		"activities": [
 			{
@@ -49,11 +49,15 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_source_ingestion",
+						"referenceName": "ds_dev_source_storage",
 						"type": "DatasetReference",
 						"parameters": {
+							"srcFolder": {
+								"value": "@pipeline().parameters.TargetFolder",
+								"type": "Expression"
+							},
 							"srcFile": {
-								"value": "@pipeline().parameters.file",
+								"value": "@pipeline().parameters.TargetFile",
 								"type": "Expression"
 							}
 						}
@@ -61,11 +65,15 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_sink_ingestion",
+						"referenceName": "ds_dev_sink_storage",
 						"type": "DatasetReference",
 						"parameters": {
-							"targetFile": {
-								"value": "@pipeline().parameters.file",
+							"sinkFolder": {
+								"value": "@pipeline().parameters.TargetFolder",
+								"type": "Expression"
+							},
+							"sinkFile": {
+								"value": "@pipeline().parameters.TargetFile",
 								"type": "Expression"
 							}
 						}
@@ -74,12 +82,13 @@
 			}
 		],
 		"parameters": {
-			"file": {
+			"TargetFolder": {
+				"type": "string"
+			},
+			"TargetFile": {
 				"type": "string"
 			}
 		},
-		"annotations": [],
-		"lastPublishTime": "2024-12-10T03:34:26Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
